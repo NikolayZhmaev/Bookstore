@@ -1,0 +1,42 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+    <style>
+        #registration_form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .field {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="registration_form">
+    <form method="post" th:action="@{/registration/save}" th:object="${user}">
+        <div class="field">
+            <input type="text" placeholder="enter name" th:field="*{name}">
+        </div>
+        <div class="field">
+            <input type="text" placeholder="enter surnames" th:field="*{surnames}">
+        </div>
+        <div class="field">
+            <input type="text" placeholder="enter age" th:field="*{age}">
+        </div>
+        <div class="field">
+            <input type="text" placeholder="enter login" th:field="*{login}">
+        </div>
+        <div class="field">
+            <input type="text" placeholder="password" th:field="*{password}">
+        </div>
+        <div class="field">
+            <input type="submit" value="registration">
+        </div>
+    </form>
+</div>
+</body>
+</html>
