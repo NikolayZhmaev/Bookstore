@@ -28,6 +28,9 @@
             <input type="text" placeholder="enter age" th:field="*{age}">
         </div>
         <div class="field">
+            <input type="text" placeholder="enter email" th:field="*{email}">
+        </div>
+        <div class="field">
             <input type="text" placeholder="enter login" th:field="*{login}">
         </div>
         <div class="field">
@@ -35,6 +38,9 @@
         </div>
         <div class="field">
             <input type="submit" value="registration">
+        </div>
+        <div th:if="${#fields.hasErrors()}">
+            <p>Wrong value</p>
         </div>
     </form>
 </div>

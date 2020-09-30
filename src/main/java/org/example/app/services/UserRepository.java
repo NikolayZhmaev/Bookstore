@@ -39,7 +39,7 @@ public class UserRepository implements ProjectRepository<User> {
 
     // в задании не указано реализовать удаление пользователя, пока отложим этот метод
     @Override
-    public boolean removeItemById(Integer bookIdToRemove) {
+    public boolean removeItemById(String bookIdToRemove) {
         return false;
     }
 

@@ -6,7 +6,13 @@ import org.example.web.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping(value = "/books")
@@ -41,14 +47,14 @@ public class BookShelfController {
     }
 
     @PostMapping(value = "/action")
-    public String action(Model model, Book book, @ModelAttribute(name = "action") String name) {
+    public String action(Book book, Model model, @ModelAttribute(name = "action") String name) {
         if (name.equals("remove")) {
-           return removeBook(book);
+            return removeBook(book);
         }
         return filterBooks(model, book);
     }
 
-//    @GetMapping("/filter")
+    //    @GetMapping("/filter")
     public String filterBooks(Model model, Book book) {
         if (bookService.validateBook(book)) {
             logger.info("got filter books");
