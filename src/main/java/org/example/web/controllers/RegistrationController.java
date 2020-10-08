@@ -37,7 +37,7 @@ public class RegistrationController {
     public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             logger.info("Input error! GET /registration returns registration_form.html");
-            model.addAttribute("user", new User());
+//            model.addAttribute("user", new User());
             return "registration_form";
         } else {
             loginService.saveUser(user);

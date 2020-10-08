@@ -1,20 +1,12 @@
 package org.example.web.dto;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Pattern;
+// модель для фильтрации и удаления книг
 
-public class Book {
-
+public class Filter extends Book {
 
     private String id;
-
-    @Pattern(regexp = "[A-Z][a-z]{1,12}", message = "enter the correct author")
     private String author;
-
-    @Pattern(regexp = "[A-Z][a-z]{1,12}", message = "enter the correct title")
     private String title;
-
-    @Digits(integer = 4, fraction = 0, message = "field value must be digit and less then 4 signs")
     private Integer size;
 
     public String getId() {
@@ -51,8 +43,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
+        return "Filter{" +
+                "id='" + id + '\'' +
                 ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", size=" + size +

@@ -20,27 +20,32 @@
     <form method="post" th:action="@{/registration/save}" th:object="${user}">
         <div class="field">
             <input type="text" placeholder="enter name" th:field="*{name}">
+            <p th th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red">enter the correct name</p>
         </div>
         <div class="field">
             <input type="text" placeholder="enter surnames" th:field="*{surnames}">
+            <p th th:if="${#fields.hasErrors('surnames')}" th:errors="*{surnames}" style="color: red">enter the correct
+                surnames</p>
         </div>
         <div class="field">
             <input type="text" placeholder="enter age" th:field="*{age}">
+            <p th th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red">enter the correct age</p>
         </div>
         <div class="field">
             <input type="text" placeholder="enter email" th:field="*{email}">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">enter the correct email</p>
         </div>
         <div class="field">
             <input type="text" placeholder="enter login" th:field="*{login}">
+            <p th:if="${#fields.hasErrors('login')}" th:errors="*{login}" style="color: red">enter the correct login</p>
         </div>
         <div class="field">
             <input type="text" placeholder="password" th:field="*{password}">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red">enter the correct
+                password</p>
         </div>
         <div class="field">
             <input type="submit" value="registration">
-        </div>
-        <div th:if="${#fields.hasErrors()}">
-            <p>Wrong value</p>
         </div>
     </form>
 </div>

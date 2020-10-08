@@ -36,12 +36,15 @@
             <tr>
                 <td>
                     <input type="text" placeholder="author" th:field="*{author}">
+                    <p th th:if="${#fields.hasErrors('author')}" th:errors="*{author}" style="color: red">enter the correct author</p>
                 </td>
                 <td>
                     <input type="text" placeholder="book_title" th:field="*{title}">
+                    <p th th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red">enter the correct title</p>
                 </td>
                 <td>
                     <input type="text" placeholder="size (pages)" th:field="*{size}">
+                    <p th th:if="${#fields.hasErrors('size')}" th:errors="*{size}" style="color: red">field value must be digit and less then 4 signs</p>
                 </td>
                 <td>
                     <input type="submit" value="save">
@@ -50,7 +53,7 @@
         </table>
     </form>
     <!--единая форма для удаления и фильтрации книг-->
-    <form method="post" th:action="@{/books/action}" th:object="${book}">
+    <form method="post" th:action="@{/books/action}" th:object="${filter}">
         <table>
             <tr>
                 <td>
@@ -72,6 +75,7 @@
                     <input type="submit" name="action" value="filter">
                 </td>
             </tr>
+            <p th th:if="${#fields.hasErrors()}" style="color: red">you must fill in the field correctly</p>
         </table>
 
     </form>

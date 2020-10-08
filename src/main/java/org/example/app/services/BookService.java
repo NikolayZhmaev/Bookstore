@@ -1,6 +1,7 @@
 package org.example.app.services;
 
 import org.example.web.dto.Book;
+import org.example.web.dto.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +22,16 @@ public class BookService {
         return bookRepo.retreiveAll();
     }
 
-    public Set<Book> getFilterBook(Book book) {
-        return bookRepo.filter(book);
+    public Set<Book> getFilterBook(Filter filter) {
+        return bookRepo.filter(filter);
     }
 
     public void saveBook(Book book) {
         bookRepo.store(book);
     }
 
-    public boolean remove(Book book) {
-        return bookRepo.remove(book);
+    public boolean remove(Filter filter) {
+        return bookRepo.remove(filter);
     }
 
     public boolean removeBookById(String bookIdToRemove) {

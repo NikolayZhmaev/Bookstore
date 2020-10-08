@@ -11,12 +11,11 @@ public class User {
         - начиналась с заглавной буквы
         - остальные буквы были маленькие
         - небыло символов и цифр
-        - буквы русского алфавита
     */
-    @Pattern(regexp = "[А-Я][а-я]{1,12}", message = "Invalid name")
+    @Pattern(regexp = "[A-Z][a-z]{1,12}", message = "enter the correct name")
     private String name;
 
-    @Pattern(regexp = "[А-Я][а-я]{1,12}", message = "Invalid surnames")
+    @Pattern(regexp = "[A-Z][a-z]{1,12}", message = "enter the correct surnames")
     private String surnames;
 
     /* Поле возраста должно соответствовать следующим критериям:
@@ -24,10 +23,10 @@ public class User {
       - минимальный возраст 10 лет
     */
     @NotNull
-    @Min(value = 10, message = "Invalid age")
+    @Min(value = 10, message = "enter the correct age")
     private Integer age;
 
-    @Email
+    @Email (message = "enter the correct email")
     private String email;
 
     /* Логин должен соответствовать следующим критериям:
@@ -35,7 +34,7 @@ public class User {
      - любые цифры и дефис
      - ни каких пробелов
    */
-    @Pattern(regexp = "[a-zA-Z0-9\\-*]{2,12}", message = "Invalid login")
+    @Pattern(regexp = "[a-zA-Z0-9\\-*]{2,12}", message = "enter the correct login")
     private String login;
 
     /* Пароль должен соответствовать следующим критериям:
@@ -43,7 +42,7 @@ public class User {
          - любые цифры
          - ни каких пробелов
    */
-    @Pattern(regexp = "[a-zA-Z0-9]{6,10}", message = "Invalid password")
+    @Pattern(regexp = "[a-zA-Z0-9]{6,10}", message = "enter the correct password")
     private String password;
 
 
