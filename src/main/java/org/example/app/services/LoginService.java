@@ -48,4 +48,10 @@ public class LoginService {
         }
         return false;
     }
+
+    public User findByLogin (String login) {
+        logger.info("try find user by login: " + login);
+        User user = userRepo.search(login);
+        return user;
+    }
 }

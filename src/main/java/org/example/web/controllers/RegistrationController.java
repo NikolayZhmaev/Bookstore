@@ -35,7 +35,7 @@ public class RegistrationController {
 
     @PostMapping("/save")
     public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || !loginService.checkSaveUser(user)) {
             logger.info("Input error! GET /registration returns registration_form.html");
 //            model.addAttribute("user", new User());
             return "registration_form";

@@ -37,7 +37,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
         DispatcherServlet dispatcherServlet = new DispatcherServlet(webContext);
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", dispatcherServlet);
-        dispatcher.setLoadOnStartup(1);
+        dispatcher.setLoadOnStartup(1); //означает что dispatcherServlet должен быть запущен первым
         dispatcher.addMapping("/");
         logger.info("dispatcher ready");
 
