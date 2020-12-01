@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 
 public class Book {
 
-
     private String id;
 
     /* Установим следующие требования для поля автор:

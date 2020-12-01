@@ -26,7 +26,7 @@ public class User {
     @Min(value = 10, message = "enter the correct age")
     private Integer age;
 
-    @Email (message = "enter the correct email")
+    @Email(message = "enter the correct email")
     private String email;
 
     /* Логин должен соответствовать следующим критериям:

@@ -18,12 +18,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private LoginService loginService;
-//    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User loginUser = loginService.findByLogin(userName);
-//         User loginUser = userRepository.search(userName);
+
         if (loginUser == null) {
             logger.info("User with login " + userName + " not found");
             throw new UsernameNotFoundException("Unknown user: " + userName); // если пользователь не найден пробросим ошибку

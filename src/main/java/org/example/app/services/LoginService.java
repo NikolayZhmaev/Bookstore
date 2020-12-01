@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.example.web.dto.LoginForm;
 import org.example.web.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +14,12 @@ public class LoginService {
 
     private Logger logger = Logger.getLogger(LoginService.class);
     private final ProjectRepository<User> userRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public LoginService(ProjectRepository<User> userRepo) {
+    public LoginService(ProjectRepository<User> userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<User> getAllUsers() {
@@ -25,6 +28,8 @@ public class LoginService {
 
     // метод по добавлению нового пользователя в базу
     public void saveUser(User user) {
+        //перед сохранением выполним хэширование пароля
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.store(user);
     }
 
@@ -49,7 +54,7 @@ public class LoginService {
         return false;
     }
 
-    public User findByLogin (String login) {
+    public User findByLogin(String login) {
         logger.info("try find user by login: " + login);
         User user = userRepo.search(login);
         return user;

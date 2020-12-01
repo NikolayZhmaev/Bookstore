@@ -30,14 +30,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         logger.info("popular in memory auth user");
 
         auth.userDetailsService(customUserDetailsService);
-
-
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("root")
-//                .password(passwordEncoder().encode("123"))
-//                .roles("USER");
-
     }
 
     //метод шифрования пароля
@@ -51,39 +43,25 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         logger.info("config http security");
-//        http
-//                .csrf()
-//                .disable()
-//                .authorizeRequests()
-////                //доступ только для не зарегистрированных пользователей
-////                .antMatchers("/registration").not().fullyAuthenticated()
-//                //доступ только для пользователей с ролью "USER"
-//                .antMatchers("/books/shelf").hasAnyRole("USER")
-//                //доступ разрешен всем пользователям
-//                .antMatchers("/login/**", "/registration/**").permitAll()
-//                //все остальные страницы требуют аутентификации
-//                .anyRequest().authenticated()
-//                .and()
-//                //настройка для входа в систему
-//                .formLogin()
-//                .loginPage("/login")
-//                //перенаправление на страницу /books/shelf после успешного входа
-//                .defaultSuccessUrl("/books/shelf", true)
-//                .failureUrl("/login");
-
 
         http
                 .csrf()
                 .disable()
                 .authorizeRequests()
+                //доступ разрешен всем пользователям
                 .antMatchers("/login/**", "/registration/**").permitAll()
+                //доступ только для пользователей с ролью "USER"
                 .antMatchers("/books/shelf").hasAnyRole("USER")
+                //все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
+                //настройка для входа в систему
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login/auth")
+                //перенаправление на страницу /books/shelf после успешного входа
                 .defaultSuccessUrl("/books/shelf", true)
+                //перенаправление на страницу /login в случае не успешной попытки входа
                 .failureUrl("/login");
     }
 
