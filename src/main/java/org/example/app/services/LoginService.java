@@ -20,13 +20,24 @@ public class LoginService {
     public LoginService(ProjectRepository<User> userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
+
+        //добавим в БД администратора со следующими параметрами
+        User userAdmin = new User();
+        userAdmin.setName("Admin");
+        userAdmin.setSurnames("Admin");
+        userAdmin.setAge(35);
+        userAdmin.setEmail("admin@mail.ru");
+        userAdmin.setLogin("admin");
+        userAdmin.setPassword("admin");
+
+        saveUser(userAdmin);
     }
 
     public List<User> getAllUsers() {
-        return userRepo.retreiveAll();
+        return userRepo.retrieveAll();
     }
 
-    // метод по добавлению нового пользователя в базу
+    // method for adding a new user to the database
     public void saveUser(User user) {
         //перед сохранением выполним хэширование пароля
         user.setPassword(passwordEncoder.encode(user.getPassword()));

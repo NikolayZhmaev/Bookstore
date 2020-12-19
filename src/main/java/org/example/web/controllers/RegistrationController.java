@@ -37,19 +37,11 @@ public class RegistrationController {
     public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors() || !loginService.checkSaveUser(user)) {
             logger.info("Input error! GET /registration returns registration_form.html");
-//            model.addAttribute("user", new User());
             return "registration_form";
         } else {
             loginService.saveUser(user);
             logger.info("current repository Users size:" + loginService.getAllUsers().size());
             return "redirect:/login";
         }
-//        if (loginService.checkSaveUser(user)) {
-//            loginService.saveUser(user);
-//            logger.info("current repository Users size:" + loginService.getAllUsers().size());
-//            return "redirect:/login";
-//        }
-//        logger.info("entered an invalid value, user " + user.toString() + ". Number of Users:" + loginService.getAllUsers().size());
-//        return "redirect:/registration";
     }
 }

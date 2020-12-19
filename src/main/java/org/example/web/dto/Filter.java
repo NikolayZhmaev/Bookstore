@@ -1,19 +1,19 @@
 package org.example.web.dto;
 
-// модель для фильтрации и удаления книг
+// model for filtering and deleting books
 
 public class Filter extends Book {
 
-    private String id;
+    private Integer id;
     private String author;
     private String title;
     private Integer size;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

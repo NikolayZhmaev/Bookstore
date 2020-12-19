@@ -36,15 +36,18 @@
             <tr>
                 <td>
                     <input type="text" placeholder="author" th:field="*{author}">
-                    <p th th:if="${#fields.hasErrors('author')}" th:errors="*{author}" style="color: red">enter the correct author</p>
+                    <p th th:if="${#fields.hasErrors('author')}" th:errors="*{author}" style="color: red">enter the
+                        correct author</p>
                 </td>
                 <td>
                     <input type="text" placeholder="book_title" th:field="*{title}">
-                    <p th th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red">enter the correct title</p>
+                    <p th th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red">enter the
+                        correct title</p>
                 </td>
                 <td>
                     <input type="text" placeholder="size (pages)" th:field="*{size}">
-                    <p th th:if="${#fields.hasErrors('size')}" th:errors="*{size}" style="color: red">field value must be digit and less then 4 signs</p>
+                    <p th th:if="${#fields.hasErrors('size')}" th:errors="*{size}" style="color: red">field value must
+                        be digit and less then 4 signs</p>
                 </td>
                 <td>
                     <input type="submit" value="save">
@@ -52,7 +55,8 @@
             </tr>
         </table>
     </form>
-    <!--единая форма для удаления и фильтрации книг-->
+
+    <!--unified form for deleting and filtering books-->
     <form method="post" th:action="@{/books/action}" th:object="${filter}">
         <table>
             <tr>
@@ -77,10 +81,35 @@
             </tr>
             <p th th:if="${#fields.hasErrors()}" style="color: red">you must fill in the field correctly</p>
         </table>
-
     </form>
 
+    <!--file upload form-->
+    <form method="post" th:action="@{/books/uploadFile}" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <input type="file" name="file">
+                </td>
+                <td>
+                    <input type="submit" value="Upload">
+                </td>
+            </tr>
+        </table>
+    </form>
 
+    <!--table for downloading files-->
+    <table id="nameFiles">
+        <tr>
+            <th>file</th>
+            <th>download</th>
+        </tr>
+        <tr th:each="fileName : ${nameFiles}">
+            <td th:text="${fileName}"></td>
+            <td>
+                <a th:href="@{/books/downloadFile(fileName=${fileName})}">Download</a>
+            </td>
+        </tr>
+    </table>
 
     <table id="books">
         <tr>

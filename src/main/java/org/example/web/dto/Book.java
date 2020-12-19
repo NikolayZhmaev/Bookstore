@@ -5,7 +5,7 @@ import javax.validation.constraints.Pattern;
 
 public class Book {
 
-    private String id;
+    private Integer id;
 
     /* Установим следующие требования для поля автор:
       - Имя (фамилия) могут начинаться только с заглавной буквы
@@ -34,11 +34,11 @@ public class Book {
     @Digits(integer = 4, fraction = 0, message = "field value must be digit and less then 4 signs")
     private Integer size;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

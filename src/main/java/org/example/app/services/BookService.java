@@ -19,7 +19,7 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        return bookRepo.retreiveAll();
+        return bookRepo.retrieveAll();
     }
 
     public Set<Book> getFilterBook(Filter filter) {
@@ -34,7 +34,7 @@ public class BookService {
         return bookRepo.remove(filter);
     }
 
-    public boolean removeBookById(String bookIdToRemove) {
+    public boolean removeBookById(Integer bookIdToRemove) {
         return bookRepo.removeItemById(bookIdToRemove);
     }
 

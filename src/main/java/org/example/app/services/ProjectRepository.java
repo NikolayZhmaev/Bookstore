@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface ProjectRepository<T> {
-    List<T> retreiveAll();
+    List<T> retrieveAll();
 
     void store(T name);
 
-    boolean removeItemById(String bookIdToRemove);
+    boolean removeItemById(Integer bookIdToRemove);
 
     boolean remove(T object);
 

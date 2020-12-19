@@ -28,7 +28,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         logger.info("popular in memory auth user");
-
         auth.userDetailsService(customUserDetailsService);
     }
 
@@ -43,6 +42,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         logger.info("config http security");
+
+        http.headers().frameOptions().disable(); //настройка позволяющая интерфейсу БД выполнить рендеринг
 
         http
                 .csrf()
