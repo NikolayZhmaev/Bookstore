@@ -40,9 +40,9 @@ public class FileService {
 
         //создание файла, сохраняемого на сервер
         File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
-        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-        stream.write(bytes);
-        stream.close();
+        try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
+            stream.write(bytes);
+        }
         setFileList();
         setNameFiles();
         logger.info("new file saved at: " + serverFile.getAbsolutePath());
