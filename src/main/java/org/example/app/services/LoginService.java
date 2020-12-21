@@ -21,7 +21,7 @@ public class LoginService {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
 
-        //добавим в БД администратора со следующими параметрами
+        //добавим в БД администратора со следующими параметрами. Временное решение!
         User userAdmin = new User();
         userAdmin.setName("Admin");
         userAdmin.setSurnames("Admin");
