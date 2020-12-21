@@ -1,1 +1,2 @@
 INSERT INTO books (author,title,size) VALUES ('Dostoevsky','Idiot',350);
+INSERT INTO users (name,surname,age,email,login,password) VALUES ('Admin', 'Admin', 35, 'admin@mail.ru', 'admin', '$2a$10$5cS1uWWIMk6skSHT58.Fcu34dnaoQqaWLZ0Hsyu6MPWjvOYHXkrjW');

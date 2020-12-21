@@ -20,17 +20,6 @@ public class LoginService {
     public LoginService(ProjectRepository<User> userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
-
-        //добавим в БД администратора со следующими параметрами. Временное решение!
-        User userAdmin = new User();
-        userAdmin.setName("Admin");
-        userAdmin.setSurnames("Admin");
-        userAdmin.setAge(35);
-        userAdmin.setEmail("admin@mail.ru");
-        userAdmin.setLogin("admin");
-        userAdmin.setPassword("admin");
-
-        saveUser(userAdmin);
     }
 
     public List<User> getAllUsers() {
